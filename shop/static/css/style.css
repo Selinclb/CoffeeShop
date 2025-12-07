@@ -599,6 +599,10 @@ nav {
     margin-right: 8px;
 }
 
+.filter-group[data-filter-type="price"] label {
+    font-family: 'Cy Grotesk Key', sans-serif;
+}
+
 .product-header {
     display: flex;
     justify-content: space-between;
