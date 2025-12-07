@@ -7,9 +7,14 @@
 
     <main>
         <section class="product-list-section">
-            <div class="filter-sidebar">
-                <h3>Filtreler</h3>
-                <button onclick="clearFilters()" class="clear-filters">Filtreleri Temizle</button>
+            <div class="filter-sidebar" id="filterSidebar">
+                <div class="filter-sidebar-header">
+                    <h3>Filtreler</h3>
+                    <button type="button" class="filter-close" aria-label="Filtreleri kapat">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <button type="button" class="clear-filters">Filtreleri Temizle</button>
                 
                 <div class="filter-group" data-filter-type="type">
                     <h4>Kahve Türü</h4>
@@ -41,14 +46,23 @@
 
             <div class="product-grid">
                 <div class="product-header">
-                    <h2>Kahve Çeşitlerimiz</h2>
-                    <div class="sort-options">
-                        <select id="sortProducts">
-                            <option value="featured">Öne Çıkanlar</option>
-                            <option value="price-low">Fiyat: Düşükten Yükseğe</option>
-                            <option value="price-high">Fiyat: Yüksekten Düşüğe</option>
-                            <option value="name">İsme Göre</option>
-                        </select>
+                    <div class="product-header-title">
+                        <h2>Kahve Çeşitlerimiz</h2>
+                        <p class="product-count"></p>
+                    </div>
+                    <div class="product-header-actions">
+                        <button type="button" class="filter-toggle" aria-expanded="false">
+                            <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                            Filtreler
+                        </button>
+                        <div class="sort-options">
+                            <select id="sortProducts" aria-label="Sırala">
+                                <option value="featured">Öne Çıkanlar</option>
+                                <option value="price-low">Fiyat: Düşükten Yükseğe</option>
+                                <option value="price-high">Fiyat: Yüksekten Düşüğe</option>
+                                <option value="name">İsme Göre</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="products-container">
@@ -96,6 +110,7 @@
                     {% endfor %}
                 </div>
             </div>
+            <div class="filter-overlay" id="filterOverlay" aria-hidden="true"></div>
         </section>
     </main>
 {% endblock %}

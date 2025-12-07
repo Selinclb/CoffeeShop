@@ -855,6 +855,27 @@ class ProfileManager {
 // ProfileManager'ı başlat
 const profileManager = new ProfileManager();
 
+document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (navToggle && mainNav) {
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            navToggle.classList.toggle('open');
+        });
+
+        mainNav.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('open');
+                    navToggle.classList.remove('open');
+                }
+            });
+        });
+    }
+});
+
 // Google Maps başlatma fonksiyonu
 function initMap() {
     // Kahve dükkanının konumu (örnek koordinatlar)

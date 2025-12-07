@@ -52,18 +52,20 @@
             <div class="team-member">
                 <div class="member-image">
                     {% if member.image %}
-                        <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                        <img src="{{ member.image.url }}" alt="{{ member.name }}" loading="lazy">
                     {% else %}
-                        <img src="{% static 'images/team.jpg' %}" alt="Varsayılan Ekip Üyesi Görseli">
+                        <img src="{% static 'images/team.jpg' %}" alt="Varsayılan Ekip Üyesi Görseli" loading="lazy">
                     {% endif %}
                 </div>
                 <h3>{{ member.name }}</h3>
                 <p class="member-title">{{ member.title }}</p>
             </div>
+            {% empty %}
+            <p class="team-empty">Ekip üyeleri yakında burada yer alacak.</p>
             {% endfor %}
         </div>
-        <br><br><br>&nbsp;<br> &nbsp;<br>
-        <h2> Bize Ulaşın</h2>
+
+        <h2 class="about-contact-heading">Bize Ulaşın</h2>
     </div>
 </div>
 {% endblock %} 

@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterGroups = document.querySelectorAll('.filter-group');
     const sortSelect = document.getElementById('sortProducts');
     const clearFilterBtn = document.querySelector('.clear-filters');
+    const filterSidebar = document.getElementById('filterSidebar');
+    const filterToggle = document.querySelector('.filter-toggle');
+    const filterCloseBtn = document.querySelector('.filter-close');
+    const filterOverlay = document.getElementById('filterOverlay');
+    const mobileBreakpoint = window.matchMedia('(max-width: 768px)');
     let products = [];
 
     // Sayfa yüklendiğinde ürünleri hazırla
@@ -123,6 +128,31 @@ document.addEventListener('DOMContentLoaded', function() {
         sortedProducts.forEach(product => productsContainer.appendChild(product));
     }
 
+    function openFilters() {
+        if (!filterSidebar) return;
+        filterSidebar.classList.add('is-open');
+        filterOverlay?.classList.add('is-visible');
+        document.body.classList.add('filters-open');
+        filterToggle?.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeFilters(shouldFocusToggle = false) {
+        if (!filterSidebar) return;
+        filterSidebar.classList.remove('is-open');
+        filterOverlay?.classList.remove('is-visible');
+        document.body.classList.remove('filters-open');
+        filterToggle?.setAttribute('aria-expanded', 'false');
+        if (shouldFocusToggle && filterToggle) {
+            filterToggle.focus();
+        }
+    }
+
+    function handleBreakpointChange(event) {
+        if (!event.matches) {
+            closeFilters();
+        }
+    }
+
     // Event Listeners
     function setupEventListeners() {
         // Filtre değişikliklerini dinle
@@ -140,6 +170,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // Filtreleri temizle butonunu dinle
         if (clearFilterBtn) {
             clearFilterBtn.addEventListener('click', clearFilters);
+        }
+
+        if (filterToggle && filterSidebar) {
+            filterToggle.addEventListener('click', () => {
+                if (filterSidebar.classList.contains('is-open')) {
+                    closeFilters(true);
+                } else {
+                    openFilters();
+                }
+            });
+        }
+
+        filterCloseBtn?.addEventListener('click', () => closeFilters(true));
+        filterOverlay?.addEventListener('click', () => closeFilters(true));
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && filterSidebar?.classList.contains('is-open')) {
+                closeFilters(true);
+            }
+        });
+
+        if (mobileBreakpoint?.addEventListener) {
+            mobileBreakpoint.addEventListener('change', handleBreakpointChange);
+        } else if (mobileBreakpoint?.addListener) {
+            mobileBreakpoint.addListener(handleBreakpointChange);
         }
     }
 

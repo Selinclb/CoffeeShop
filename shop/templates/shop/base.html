@@ -21,15 +21,13 @@
                 Coffee <span class="logo-shop">Shop</span>
             </a>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="{% url 'shop:product_list' %}" class="nav-link">Kahvelerimiz</a></li>
-                <li><a href="{% url 'shop:atolyeler' %}" class="nav-link">Atölyelerimiz</a></li>
-                <li><a href="{% url 'settings:about' %}" class="nav-link">Hakkımızda</a></li>
-                <li><a href="{% url 'settings:faq' %}" class="nav-link">SSS</a></li>
-            </ul>
-        </nav>
-        <div class="user-actions">
+        <div class="header-actions">
+            <button class="nav-toggle" aria-label="Menüyü Aç/Kapat">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="user-actions">
             {% if user.is_authenticated %}
                 <div class="user-menu-wrapper">
                     <a href="#" class="login">
@@ -48,7 +46,16 @@
                 Sepet 
                 <span class="cart-count">{{ cart_count }}</span>
             </a>
+            </div>
         </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="{% url 'shop:product_list' %}" class="nav-link">Kahvelerimiz</a></li>
+                <li><a href="{% url 'shop:atolyeler' %}" class="nav-link">Atölyelerimiz</a></li>
+                <li><a href="{% url 'settings:about' %}" class="nav-link">Hakkımızda</a></li>
+                <li><a href="{% url 'settings:faq' %}" class="nav-link">SSS</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Ana İçerik -->
