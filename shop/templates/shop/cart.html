@@ -24,7 +24,7 @@
                             </div>
                             <div class="item-info">
                                 <h3>{{ item.product.title }}</h3>
-                                <p class="item-price">{{ item.product.price }}₺</p>
+                                <p class="item-category">{{ item.product.category.title }}</p>
                             </div>
                             <div class="item-quantity">
                                 <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">-</button>

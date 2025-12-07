@@ -1004,6 +1004,7 @@ input.quantity:focus {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 2rem;
+    font-family: 'Cy Grotesk Key', sans-serif;
 }
 
 .cart-left h2, .cart-right h2 {
@@ -1018,6 +1019,14 @@ input.quantity:focus {
     gap: 1rem;
     padding: 1rem;
     border-bottom: 1px solid #eee;
+    font-family: 'Cy Grotesk Key', sans-serif;
+}
+
+.cart-item .item-category {
+    color: var(--neo-text-muted);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 .continue-shopping {
     background-color: #71625a;
@@ -1089,18 +1098,21 @@ input.quantity:focus {
     background: #f9f9f9;
     padding: 1.5rem;
     border-radius: 8px;
+    font-family: 'Cy Grotesk Key', sans-serif;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    font-family: 'Cy Grotesk Key', sans-serif;
 }
 
 .summary-row.total {
     border-top: 1px solid #ddd;
     padding-top: 1rem;
     font-weight: bold;
+    font-family: 'Cy Grotesk Key', sans-serif;
 }
 
 .checkout-btn {
@@ -2244,6 +2256,7 @@ body.neo-theme .product-list-section,
 body.neo-theme .cart-page {
     max-width: 1400px;
     margin: 0 auto;
+    font-family: 'Cy Grotesk Key', sans-serif;
 }
 
 body.neo-theme .featured-products {
@@ -2347,6 +2360,12 @@ body.neo-theme .faq-intro {
     font-size: 1.05rem;
     line-height: 1.9;
     font-family: 'Playfair Display', serif;
+}
+
+body.neo-theme .summary-row span,
+body.neo-theme .order-summary h2,
+body.neo-theme .order-summary span {
+    font-family: 'Cy Grotesk Key', sans-serif !important;
 }
 
 body.neo-theme .workshops-grid {
