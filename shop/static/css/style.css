@@ -2356,12 +2356,17 @@ body.neo-theme .cart-count {
 body.neo-theme .hero {
     min-height: 90vh;
     padding-top: 140px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 body.neo-theme .hero-content {
     max-width: 900px;
     margin: 0 auto;
+    text-align: center;
 }
 
 body.neo-theme .hero h1 {
