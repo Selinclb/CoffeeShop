@@ -14,7 +14,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['coffee-shop.vercel.app']
+ALLOWED_HOSTS = ['coffee-shop-sigma-flame.vercel.app']
 
 
 # Application definition
