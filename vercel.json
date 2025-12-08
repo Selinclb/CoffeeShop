@@ -1,16 +1,8 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "coffee_site/asgi.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "coffee_site/asgi.py"
-      }
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/coffee_site/wsgi.py"
+        }
     ]
-  }
-  
+}
