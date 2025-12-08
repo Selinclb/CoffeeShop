@@ -121,7 +121,9 @@
     
     <!-- JavaScript dosyaları -->
     <script src="{% static 'js/script.js' %}"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMsXC2Yk5OQ5C8Vo3CnFNs2NLcysl_XFg&callback=initMap"></script>
+    {% if GOOGLE_MAPS_API_KEY %}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY|urlencode }}&callback=initMap"></script>
+    {% endif %}
     {% block extra_js %}{% endblock %}
 </body>
 </html>
