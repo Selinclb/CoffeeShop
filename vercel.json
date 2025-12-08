@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "api/asgi.py",
+        "src": "coffee_site/asgi.py",
         "use": "@vercel/python"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "api/asgi.py"
+        "dest": "coffee_site/asgi.py"
       }
     ]
   }
