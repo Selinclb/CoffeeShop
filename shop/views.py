@@ -2,10 +2,11 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from .models import Category, Product, Workshop
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.contrib import messages
+from .forms import EmailUserCreationForm
 
 
 
@@ -77,14 +78,14 @@ def register(request):
         return redirect('shop:index')
         
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = EmailUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
             messages.success(request, 'Hesabınız başarıyla oluşturuldu!')
             return redirect('shop:index')
     else:
-        form = UserCreationForm()
+        form = EmailUserCreationForm()
     
     return render(request, 'shop/register.html', {
         'form': form
@@ -94,16 +95,22 @@ def register(request):
 def login_view(request):
         
     if request.method == 'POST':
-        username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+
+        # Find the user by email, then authenticate using the stored username.
+        account = User.objects.filter(email__iexact=email).first()
+        if account:
+            user = authenticate(request, username=account.username, password=password)
+        else:
+            user = None
         
         if user is not None:
             auth_login(request, user)
             messages.success(request, 'Başarıyla giriş yaptınız!')
             return redirect('shop:index')
         else:
-            messages.error(request, 'Kullanıcı adı veya şifre hatalı!')
+            messages.error(request, 'E-posta veya şifre hatalı!')
     
     return render(request, 'shop/login.html')
 
